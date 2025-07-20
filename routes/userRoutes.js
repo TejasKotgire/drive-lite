@@ -4,7 +4,8 @@ const { registerValidation } = require('../middlewares/userValidator');
 const { registerUser } = require('../controllers/userController');
 
 router.get('/register', (req, res)=>{
-    res.render('register', {error: null});
+    const error = req.query.error || null;
+    res.render('register', {error: error});
 })
 
 router.post('/register', registerValidation, registerUser);
